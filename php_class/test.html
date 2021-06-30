@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function getDate()
+        {
+            var xmlhttp;
+            if (window.XMLHttpRequest)
+            {
+                xmlhttp = new XMLHttpRequest();
+            }else{
+                xmlhttp = new ActiveXObject();
+            }
+
+            xmlhttp.onreadystatechange = function () {
+                if(xmlhttp.readyState == 4 && xmlhttp.status == 200)
+                {
+                    document.getElementById('test').innerHTML = xmlhttp.responseText;
+                }else{
+                    document.getElementById('test').innerHTML = "请求失败";
+                }
+            }
+
+            xmlhttp.open('GET','class.php');
+            xmlhttp.send();
+        }
+    </script>
+</head>
+<body>
+    <button onclick="getDate()">获取当前时间</button>
+    <p id="test"></p>
+</body>
+</html>
